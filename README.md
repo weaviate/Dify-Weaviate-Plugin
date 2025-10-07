@@ -20,12 +20,7 @@ A comprehensive Dify plugin that provides seamless integration with Weaviate vec
 
 ## Installation
 
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-2. Configure your Weaviate instance credentials in Dify
+1. Configure your Weaviate instance credentials in Dify
 
 ## Configuration
 
@@ -211,4 +206,4 @@ This plugin is provided by Weaviate for integration with Dify.
 
 ## Repository
 
-Source code: https://github.com/DhruvGorasiya/weaviate-plugin
+Source code: https://github.com/weaviate/Dify-Weaviate-Plugin
