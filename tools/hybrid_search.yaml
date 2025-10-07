@@ -1,0 +1,115 @@
+identity:
+  name: "hybrid_search"
+  author: "weaviate"
+  label:
+    en_US: "Hybrid Search"
+    zh_Hans: "混合搜索"
+    pt_BR: "Busca Híbrida"
+  description:
+    en_US: "Perform hybrid search combining vector similarity and keyword search"
+    zh_Hans: "执行结合向量相似性和关键词搜索的混合搜索"
+    pt_BR: "Execute busca híbrida combinando similaridade vetorial e busca por palavras-chave"
+  icon: "icon.svg"
+description:
+  human:
+    en_US: "Perform hybrid search combining vector similarity and keyword search"
+    zh_Hans: "执行结合向量相似性和关键词搜索的混合搜索"
+    pt_BR: "Execute busca híbrida combinando similaridade vetorial e busca por palavras-chave"
+  llm: "Search using both vector similarity and keyword matching for comprehensive results"
+parameters:
+  - name: "collection_name"
+    type: "string"
+    required: true
+    label:
+      en_US: "Collection Name"
+      zh_Hans: "集合名称"
+      pt_BR: "Nome da Coleção"
+    human_description:
+      en_US: "Name of the Weaviate collection to search"
+      zh_Hans: "要搜索的 Weaviate 集合名称"
+      pt_BR: "Nome da coleção Weaviate para buscar"
+    llm_description: "The name of the Weaviate collection to perform hybrid search on"
+    form: llm
+  - name: "query"
+    type: "string"
+    required: false
+    label:
+      en_US: "Query Text"
+      zh_Hans: "查询文本"
+      pt_BR: "Texto da Consulta"
+    human_description:
+      en_US: "Text query for keyword search (required if query_vector not provided)"
+      zh_Hans: "用于关键词搜索的文本查询（如果未提供查询向量则为必需）"
+      pt_BR: "Consulta de texto para busca por palavras-chave (obrigatório se query_vector não fornecido)"
+    llm_description: "Text query for keyword search component (required if query_vector not provided)"
+    form: llm
+  - name: "query_vector"
+    type: "string"
+    required: false
+    label:
+      en_US: "Query Vector"
+      zh_Hans: "查询向量"
+      pt_BR: "Vetor de Consulta"
+    human_description:
+      en_US: "Comma-separated vector values for similarity search (required if query not provided)"
+      zh_Hans: "用于相似性搜索的逗号分隔向量值（如果未提供查询则为必需）"
+      pt_BR: "Valores vetoriais separados por vírgula para busca de similaridade (obrigatório se query não fornecido)"
+    llm_description: "Comma-separated list of vector values for vector similarity search (required if query not provided)"
+    form: llm
+  - name: "alpha"
+    type: "number"
+    required: false
+    default: 0.7
+    label:
+      en_US: "Alpha"
+      zh_Hans: "Alpha"
+      pt_BR: "Alpha"
+    human_description:
+      en_US: "Weight for vector search vs keyword search (0.0-1.0)"
+      zh_Hans: "向量搜索与关键词搜索的权重 (0.0-1.0)"
+      pt_BR: "Peso para busca vetorial vs busca por palavras-chave (0.0-1.0)"
+    llm_description: "Weight parameter balancing vector search (1.0) vs keyword search (0.0)"
+    form: llm
+  - name: "limit"
+    type: "number"
+    required: false
+    default: 10
+    label:
+      en_US: "Limit"
+      zh_Hans: "限制"
+      pt_BR: "Limite"
+    human_description:
+      en_US: "Maximum number of results to return (1-1000)"
+      zh_Hans: "返回的最大结果数 (1-1000)"
+      pt_BR: "Número máximo de resultados para retornar (1-1000)"
+    llm_description: "Maximum number of search results to return"
+    form: llm
+  - name: "where_filter"
+    type: "string"
+    required: false
+    label:
+      en_US: "Where Filter"
+      zh_Hans: "过滤条件"
+      pt_BR: "Filtro Where"
+    human_description:
+      en_US: "JSON filter conditions for the search (optional)"
+      zh_Hans: "搜索的 JSON 过滤条件（可选）"
+      pt_BR: "Condições de filtro JSON para a busca (opcional)"
+    llm_description: "Optional JSON filter conditions to apply to the search"
+    form: llm
+  - name: "return_properties"
+    type: "string"
+    required: false
+    label:
+      en_US: "Return Properties"
+      zh_Hans: "返回属性"
+      pt_BR: "Propriedades de Retorno"
+    human_description:
+      en_US: "Comma-separated list of properties to return (optional)"
+      zh_Hans: "要返回的属性的逗号分隔列表（可选）"
+      pt_BR: "Lista separada por vírgula de propriedades para retornar (opcional)"
+    llm_description: "Optional comma-separated list of specific properties to return in results"
+    form: llm
+extra:
+  python:
+    source: tools/hybrid_search.py

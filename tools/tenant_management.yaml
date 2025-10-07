@@ -1,0 +1,73 @@
+identity:
+  name: "tenant_management"
+  author: "weaviate"
+  label:
+    en_US: "Tenant Management"
+    zh_Hans: "租户管理"
+    pt_BR: "Gerenciamento de Inquilinos"
+  description:
+    en_US: "Manage multi-tenant collections in Weaviate"
+    zh_Hans: "管理 Weaviate 中的多租户集合"
+    pt_BR: "Gerenciar coleções multi-inquilino no Weaviate"
+  icon: "icon.svg"
+description:
+  human:
+    en_US: "Manage multi-tenant collections in Weaviate"
+    zh_Hans: "管理 Weaviate 中的多租户集合"
+    pt_BR: "Gerenciar coleções multi-inquilino no Weaviate"
+  llm: "Manage tenants for multi-tenant Weaviate collections"
+parameters:
+  - name: "operation"
+    type: "select"
+    required: true
+    options:
+      - value: "list_tenants"
+        label:
+          en_US: "List Tenants"
+      - value: "add_tenants"
+        label:
+          en_US: "Add Tenants"
+      - value: "delete_tenants"
+        label:
+          en_US: "Delete Tenants"
+    label:
+      en_US: "Operation"
+      zh_Hans: "操作"
+      pt_BR: "Operação"
+    human_description:
+      en_US: "Type of tenant operation to perform"
+      zh_Hans: "要执行的租户操作类型"
+      pt_BR: "Tipo de operação de inquilino para executar"
+    llm_description: "The type of tenant management operation to perform"
+    form: llm
+
+  - name: "collection_name"
+    type: "string"
+    required: true
+    label:
+      en_US: "Collection Name"
+      zh_Hans: "集合名称"
+      pt_BR: "Nome da Coleção"
+    human_description:
+      en_US: "Name of the multi-tenant Weaviate collection"
+      zh_Hans: "多租户 Weaviate 集合的名称"
+      pt_BR: "Nome da coleção multi-inquilino Weaviate"
+    llm_description: "The name of the multi-tenant Weaviate collection"
+    form: llm
+
+  - name: "tenants"
+    type: "string"
+    required: false
+    label:
+      en_US: "Tenants"
+      zh_Hans: "租户"
+      pt_BR: "Inquilinos"
+    human_description:
+      en_US: "JSON array of tenant names (required for add/delete operations)"
+      zh_Hans: "租户名称的 JSON 数组（添加/删除操作需要）"
+      pt_BR: "Array JSON de nomes de inquilinos (necessário para operações de adicionar/excluir)"
+    llm_description: "JSON array of tenant names for add or delete operations"
+    form: llm
+extra:
+  python:
+    source: tools/tenant_management.py

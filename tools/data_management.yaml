@@ -1,0 +1,253 @@
+identity:
+  name: "data_management"
+  author: "weaviate"
+  label:
+    en_US: "Data Management"
+    zh_Hans: "数据管理"
+    pt_BR: "Gerenciamento de Dados"
+  description:
+    en_US: "Insert, update, delete, and retrieve objects in Weaviate collections"
+    zh_Hans: "在 Weaviate 集合中插入、更新、删除和检索对象"
+    pt_BR: "Inserir, atualizar, excluir e recuperar objetos em coleções Weaviate"
+  icon: "icon.svg"
+description:
+  human:
+    en_US: "Insert, update, delete, and retrieve objects in Weaviate collections"
+    zh_Hans: "在 Weaviate 集合中插入、更新、删除和检索对象"
+    pt_BR: "Inserir, atualizar, excluir e recuperar objetos em coleções Weaviate"
+  llm: "Manage data objects in Weaviate database including CRUD operations with advanced features like batch operations, multi-tenancy, and filtering"
+parameters:
+  - name: "operation"
+    type: "select"
+    required: true
+    options:
+      - value: "insert"
+        label:
+          en_US: "Insert"
+      - value: "update"
+        label:
+          en_US: "Update"
+      - value: "delete"
+        label:
+          en_US: "Delete"
+      - value: "get"
+        label:
+          en_US: "Get"
+      - value: "list_objects"
+        label:
+          en_US: "List Objects"
+      - value: "list_collections"
+        label:
+          en_US: "List Collections"
+    label:
+      en_US: "Operation"
+      zh_Hans: "操作"
+      pt_BR: "Operação"
+    human_description:
+      en_US: "Type of data operation to perform"
+      zh_Hans: "要执行的数据操作类型"
+      pt_BR: "Tipo de operação de dados para executar"
+    llm_description: "The type of data management operation to perform"
+    form: llm
+
+  - name: "collection_name"
+    type: "string"
+    required: true
+    label:
+      en_US: "Collection Name"
+      zh_Hans: "集合名称"
+      pt_BR: "Nome da Coleção"
+    human_description:
+      en_US: "Name of the Weaviate collection"
+      zh_Hans: "Weaviate 集合名称"
+      pt_BR: "Nome da coleção Weaviate"
+    llm_description: "The name of the Weaviate collection to operate on"
+    form: llm
+
+  - name: "object_data"
+    type: "string"
+    required: false
+    label:
+      en_US: "Object Data"
+      zh_Hans: "对象数据"
+      pt_BR: "Dados do Objeto"
+    human_description:
+      en_US: "JSON object data for insert/update operations"
+      zh_Hans: "用于插入/更新操作的 JSON 对象数据"
+      pt_BR: "Dados de objeto JSON para operações de inserção/atualização"
+    llm_description: "JSON object data for insert or update operations"
+    form: llm
+
+  - name: "object_uuid"
+    type: "string"
+    required: false
+    label:
+      en_US: "Object UUID"
+      zh_Hans: "对象 UUID"
+      pt_BR: "UUID do Objeto"
+    human_description:
+      en_US: "UUID of the object for update/delete/get operations"
+      zh_Hans: "用于更新/删除/获取操作的对象 UUID"
+      pt_BR: "UUID do objeto para operações de atualização/exclusão/obtenção"
+    llm_description: "UUID of the object for update, delete, or get operations"
+    form: llm
+
+  - name: "return_properties"
+    type: "string"
+    required: false
+    label:
+      en_US: "Return Properties"
+      zh_Hans: "返回属性"
+      pt_BR: "Propriedades de Retorno"
+    human_description:
+      en_US: "Comma-separated list of properties to return (optional)"
+      zh_Hans: "要返回的属性的逗号分隔列表（可选）"
+      pt_BR: "Lista separada por vírgula de propriedades para retornar (opcional)"
+    llm_description: "Optional comma-separated list of specific properties to return"
+    form: llm
+
+  - name: "mode"
+    type: "select"
+    required: false
+    options:
+      - value: "single"
+        label:
+          en_US: "Single"
+      - value: "batch"
+        label:
+          en_US: "Batch"
+    label:
+      en_US: "Mode"
+      zh_Hans: "模式"
+      pt_BR: "Modo"
+    human_description:
+      en_US: "Insert mode: single object or batch processing"
+      zh_Hans: "插入模式：单个对象或批处理"
+      pt_BR: "Modo de inserção: objeto único ou processamento em lote"
+    llm_description: "Insert mode for processing single objects or batches"
+    form: llm
+
+  - name: "batch_size"
+    type: "number"
+    required: false
+    label:
+      en_US: "Batch Size"
+      zh_Hans: "批处理大小"
+      pt_BR: "Tamanho do Lote"
+    human_description:
+      en_US: "Number of objects to process in each batch (default: 100)"
+      zh_Hans: "每批处理的对象数量（默认：100）"
+      pt_BR: "Número de objetos para processar em cada lote (padrão: 100)"
+    llm_description: "Number of objects to process in each batch for batch operations"
+    form: llm
+
+  - name: "tenant"
+    type: "string"
+    required: false
+    label:
+      en_US: "Tenant"
+      zh_Hans: "租户"
+      pt_BR: "Inquilino"
+    human_description:
+      en_US: "Tenant ID for multi-tenant collections (optional)"
+      zh_Hans: "多租户集合的租户 ID（可选）"
+      pt_BR: "ID do inquilino para coleções multi-inquilino (opcional)"
+    llm_description: "Tenant ID for multi-tenant collections"
+    form: llm
+
+  - name: "where_filter"
+    type: "string"
+    required: false
+    label:
+      en_US: "Where Filter"
+      zh_Hans: "过滤条件"
+      pt_BR: "Filtro Where"
+    human_description:
+      en_US: "JSON filter for list/delete operations"
+      zh_Hans: "用于列表/删除操作的 JSON 过滤器"
+      pt_BR: "Filtro JSON para operações de lista/exclusão"
+    llm_description: "JSON filter for list objects or delete by filter operations"
+    form: llm
+
+  - name: "limit"
+    type: "number"
+    required: false
+    label:
+      en_US: "Limit"
+      zh_Hans: "限制"
+      pt_BR: "Limite"
+    human_description:
+      en_US: "Maximum number of objects to return (default: 100)"
+      zh_Hans: "要返回的最大对象数（默认：100）"
+      pt_BR: "Número máximo de objetos para retornar (padrão: 100)"
+    llm_description: "Maximum number of objects to return for list operations"
+    form: llm
+
+  - name: "include_vector"
+    type: "boolean"
+    required: false
+    label:
+      en_US: "Include Vector"
+      zh_Hans: "包含向量"
+      pt_BR: "Incluir Vetor"
+    human_description:
+      en_US: "Include vector data in response (default: false)"
+      zh_Hans: "在响应中包含向量数据（默认：false）"
+      pt_BR: "Incluir dados de vetor na resposta (padrão: false)"
+    llm_description: "Include vector data in the response"
+    form: llm
+
+  - name: "return_additional"
+    type: "string"
+    required: false
+    label:
+      en_US: "Return Additional"
+      zh_Hans: "返回附加信息"
+      pt_BR: "Retornar Adicional"
+    human_description:
+      en_US: "Comma-separated list of additional fields (e.g., creationTimeUnix,lastUpdateTimeUnix)"
+      zh_Hans: "附加字段的逗号分隔列表（例如：creationTimeUnix,lastUpdateTimeUnix）"
+      pt_BR: "Lista separada por vírgula de campos adicionais (ex: creationTimeUnix,lastUpdateTimeUnix)"
+    llm_description: "Comma-separated list of additional metadata fields to return"
+    form: llm
+
+  - name: "update_mode"
+    type: "select"
+    required: false
+    options:
+      - value: "merge"
+        label:
+          en_US: "Merge"
+      - value: "replace"
+        label:
+          en_US: "Replace"
+      - value: "vector_only"
+        label:
+          en_US: "Vector Only"
+    label:
+      en_US: "Update Mode"
+      zh_Hans: "更新模式"
+      pt_BR: "Modo de Atualização"
+    human_description:
+      en_US: "Update mode: merge properties, replace entire object, or update vector only"
+      zh_Hans: "更新模式：合并属性、替换整个对象或仅更新向量"
+      pt_BR: "Modo de atualização: mesclar propriedades, substituir objeto inteiro ou apenas vetor"
+    llm_description: "Update mode for modifying objects"
+    form: llm
+
+  - name: "dry_run"
+    type: "boolean"
+    required: false
+    label:
+      en_US: "Dry Run"
+      zh_Hans: "试运行"
+      pt_BR: "Execução Seca"
+    human_description:
+      en_US: "Preview operation without making changes (for delete operations)"
+      zh_Hans: "预览操作而不进行更改（用于删除操作）"
+      pt_BR: "Visualizar operação sem fazer alterações (para operações de exclusão)"
+    llm_description: "Preview operation without making actual changes"
+    form: llm
+extra:
+  python:
+    source: tools/data_management.py

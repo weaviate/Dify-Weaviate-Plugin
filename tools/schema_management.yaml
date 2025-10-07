@@ -1,0 +1,158 @@
+identity:
+  name: "schema_management"
+  author: "weaviate"
+  label:
+    en_US: "Schema Management"
+    zh_Hans: "模式管理"
+    pt_BR: "Gerenciamento de Esquema"
+  description:
+    en_US: "Create, delete, and manage Weaviate collection schemas"
+    zh_Hans: "创建、删除和管理 Weaviate 集合模式"
+    pt_BR: "Criar, excluir e gerenciar esquemas de coleção Weaviate"
+  icon: "icon.svg"
+description:
+  human:
+    en_US: "Create, delete, and manage Weaviate collection schemas"
+    zh_Hans: "创建、删除和管理 Weaviate 集合模式"
+    pt_BR: "Criar, excluir e gerenciar esquemas de coleção Weaviate"
+  llm: "Manage Weaviate collection schemas including creation, deletion, inspection, and configuration updates"
+parameters:
+  - name: "operation"
+    type: "select"
+    required: true
+    options:
+      - value: "create_collection"
+        label:
+          en_US: "Create Collection"
+      - value: "delete_collection"
+        label:
+          en_US: "Delete Collection"
+      - value: "get_schema"
+        label:
+          en_US: "Get Schema"
+      - value: "list_collections"
+        label:
+          en_US: "List Collections"
+      - value: "get_stats"
+        label:
+          en_US: "Get Stats"
+      - value: "exists"
+        label:
+          en_US: "Check Exists"
+      - value: "add_property"
+        label:
+          en_US: "Add Property"
+      - value: "update_config"
+        label:
+          en_US: "Update Config"
+    label:
+      en_US: "Operation"
+      zh_Hans: "操作"
+      pt_BR: "Operação"
+    human_description:
+      en_US: "Type of schema operation to perform"
+      zh_Hans: "要执行的模式操作类型"
+      pt_BR: "Tipo de operação de esquema para executar"
+    llm_description: "The type of schema management operation to perform"
+    form: llm
+
+  - name: "collection_name"
+    type: "string"
+    required: false
+    label:
+      en_US: "Collection Name"
+      zh_Hans: "集合名称"
+      pt_BR: "Nome da Coleção"
+    human_description:
+      en_US: "Name of the Weaviate collection (required for most operations)"
+      zh_Hans: "Weaviate 集合名称（大多数操作需要）"
+      pt_BR: "Nome da coleção Weaviate (necessário para a maioria das operações)"
+    llm_description: "The name of the Weaviate collection to operate on"
+    form: llm
+
+  - name: "properties"
+    type: "string"
+    required: false
+    label:
+      en_US: "Properties"
+      zh_Hans: "属性"
+      pt_BR: "Propriedades"
+    human_description:
+      en_US: "JSON array of property definitions for collection creation"
+      zh_Hans: "用于集合创建的属性定义的 JSON 数组"
+      pt_BR: "Array JSON de definições de propriedades para criação de coleção"
+    llm_description: "JSON array of property definitions for creating a new collection"
+    form: llm
+
+  - name: "vectorizer"
+    type: "string"
+    required: false
+    label:
+      en_US: "Vectorizer"
+      zh_Hans: "向量化器"
+      pt_BR: "Vetorizador"
+    human_description:
+      en_US: "Vectorizer configuration for the collection (optional)"
+      zh_Hans: "集合的向量化器配置（可选）"
+      pt_BR: "Configuração do vetorizador para a coleção (opcional)"
+    llm_description: "Optional vectorizer configuration for the collection"
+    form: llm
+
+  - name: "description"
+    type: "string"
+    required: false
+    label:
+      en_US: "Description"
+      zh_Hans: "描述"
+      pt_BR: "Descrição"
+    human_description:
+      en_US: "Optional description for the collection"
+      zh_Hans: "集合的可选描述"
+      pt_BR: "Descrição opcional para a coleção"
+    llm_description: "Optional description for the collection"
+    form: llm
+
+  - name: "multi_tenancy"
+    type: "boolean"
+    required: false
+    label:
+      en_US: "Multi-tenancy"
+      zh_Hans: "多租户"
+      pt_BR: "Multi-inquilino"
+    human_description:
+      en_US: "Enable multi-tenancy for the collection (optional)"
+      zh_Hans: "为集合启用多租户（可选）"
+      pt_BR: "Habilitar multi-inquilino para a coleção (opcional)"
+    llm_description: "Enable multi-tenancy for the collection"
+    form: llm
+
+  - name: "property"
+    type: "string"
+    required: false
+    label:
+      en_US: "Property"
+      zh_Hans: "属性"
+      pt_BR: "Propriedade"
+    human_description:
+      en_US: "JSON object defining a single property to add"
+      zh_Hans: "定义要添加的单个属性的 JSON 对象"
+      pt_BR: "Objeto JSON definindo uma única propriedade para adicionar"
+    llm_description: "JSON object defining a single property to add to the collection"
+    form: llm
+
+  - name: "config"
+    type: "string"
+    required: false
+    label:
+      en_US: "Config"
+      zh_Hans: "配置"
+      pt_BR: "Configuração"
+    human_description:
+      en_US: "JSON object with configuration updates to apply"
+      zh_Hans: "要应用的配置更新的 JSON 对象"
+      pt_BR: "Objeto JSON com atualizações de configuração para aplicar"
+    llm_description: "JSON object with configuration updates to apply to the collection"
+    form: llm
+extra:
+  python:
+    source: tools/schema_management.py

@@ -1,0 +1,50 @@
+version: 0.0.1
+type: plugin
+author: weaviate
+name: weaviate
+label:
+  en_US: weaviate
+  ja_JP: weaviate 
+  zh_Hans: weaviate
+  pt_BR: weaviate
+description:
+  en_US: Build Dify applications using Weaviate for Vector, Generative search and more
+  ja_JP: Plugin development to connect weaviate with dify
+  zh_Hans: Plugin development to connect weaviate with dify
+  pt_BR: Plugin development to connect weaviate with dify
+icon: icon.svg
+icon_dark: icon-dark.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+    model:
+      enabled: true
+      llm: true
+      text_embedding: true
+      rerank: true
+      tts: true
+      speech2text: true
+      moderation: true
+    app:
+      enabled: true
+plugins:
+  tools:
+    - provider/weaviate_plugin.yaml
+  extra:
+    python:
+      source: provider/weaviate_plugin.py
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: null
+created_at: 2025-09-10T12:24:06.373845-04:00
+privacy: PRIVACY.md
+verified: false

@@ -1,0 +1,86 @@
+identity:
+  author: "weaviate"
+  name: "weaviate"
+  label:
+    en_US: "Weaviate Vector Database"
+    zh_Hans: "Weaviate 向量数据库"
+    pt_BR: "Banco de Dados Vetorial Weaviate"
+  description:
+    en_US: "Connect to Weaviate vector database for semantic search, data management, and AI-powered applications"
+    zh_Hans: "连接到 Weaviate 向量数据库，用于语义搜索、数据管理和 AI 驱动的应用程序"
+    pt_BR: "Conecte-se ao banco de dados vetorial Weaviate para busca semântica, gerenciamento de dados e aplicações de IA"
+  icon: "icon.svg"
+
+credentials_schema:
+  - name: "url"
+    type: "text-input"
+    required: true
+    placeholder:
+      en_US: "https://your-weaviate-instance.com"
+      zh_Hans: "https://your-weaviate-instance.com"
+      pt_BR: "https://your-weaviate-instance.com"
+    help:
+      en_US: "The URL of your Weaviate instance"
+      zh_Hans: "您的 Weaviate 实例的 URL"
+      pt_BR: "A URL da sua instância Weaviate"
+    label:
+      en_US: "Weaviate URL"
+      zh_Hans: "Weaviate URL"
+      pt_BR: "URL do Weaviate"
+  - name: "api_key"
+    type: "secret-input"
+    required: false
+    placeholder:
+      en_US: "Your Weaviate API key (optional)"
+      zh_Hans: "您的 Weaviate API 密钥（可选）"
+      pt_BR: "Sua chave API do Weaviate (opcional)"
+    help:
+      en_US: "API key for authentication (leave empty for open instances)"
+      zh_Hans: "用于身份验证的 API 密钥（对于开放实例留空）"
+      pt_BR: "Chave API para autenticação (deixe vazio para instâncias abertas)"
+    label:
+      en_US: "API Key"
+      zh_Hans: "API 密钥"
+      pt_BR: "Chave API"
+  - name: "openai_api_key"
+    type: "secret-input"
+    required: false
+    placeholder:
+      en_US: "Your OpenAI API key (for generative search)"
+      zh_Hans: "您的 OpenAI API 密钥（用于生成式搜索）"
+      pt_BR: "Sua chave API OpenAI (para busca generativa)"
+    help:
+      en_US: "OpenAI API key for generative search capabilities"
+      zh_Hans: "用于生成式搜索功能的 OpenAI API 密钥"
+      pt_BR: "Chave API OpenAI para capacidades de busca generativa"
+    label:
+      en_US: "OpenAI API Key"
+      zh_Hans: "OpenAI API 密钥"
+      pt_BR: "Chave API OpenAI"
+  - name: "anthropic_api_key"
+    type: "secret-input"
+    required: false
+    placeholder:
+      en_US: "Your Anthropic API key (for generative search)"
+      zh_Hans: "您的 Anthropic API 密钥（用于生成式搜索）"
+      pt_BR: "Sua chave API Anthropic (para busca generativa)"
+    help:
+      en_US: "Anthropic API key for generative search capabilities"
+      zh_Hans: "用于生成式搜索功能的 Anthropic API 密钥"
+      pt_BR: "Chave API Anthropic para capacidades de busca generativa"
+    label:
+      en_US: "Anthropic API Key"
+      zh_Hans: "Anthropic API 密钥"
+      pt_BR: "Chave API Anthropic"
+
+tools:
+  - tools/vector_search.yaml
+  - tools/hybrid_search.yaml
+  - tools/keyword_search.yaml
+  - tools/generative_search.yaml
+  - tools/query_agent.yaml
+  - tools/data_management.yaml
+  - tools/schema_management.yaml
+extra:
+  python:
+    source: provider/weaviate_plugin.py

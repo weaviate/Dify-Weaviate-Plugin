@@ -1,0 +1,101 @@
+identity:
+  name: "keyword_search"
+  author: "weaviate"
+  label:
+    en_US: "Keyword Search"
+    zh_Hans: "关键词搜索"
+    pt_BR: "Busca por Palavras-chave"
+  description:
+    en_US: "Perform BM25 keyword search in Weaviate collections"
+    zh_Hans: "在 Weaviate 集合中执行 BM25 关键词搜索"
+    pt_BR: "Execute busca por palavras-chave BM25 em coleções Weaviate"
+  icon: "icon.svg"
+description:
+  human:
+    en_US: "Perform BM25 keyword search in Weaviate collections"
+    zh_Hans: "在 Weaviate 集合中执行 BM25 关键词搜索"
+    pt_BR: "Execute busca por palavras-chave BM25 em coleções Weaviate"
+  llm: "Search for documents using BM25 keyword matching algorithm"
+parameters:
+  - name: "collection_name"
+    type: "string"
+    required: true
+    label:
+      en_US: "Collection Name"
+      zh_Hans: "集合名称"
+      pt_BR: "Nome da Coleção"
+    human_description:
+      en_US: "Name of the Weaviate collection to search"
+      zh_Hans: "要搜索的 Weaviate 集合名称"
+      pt_BR: "Nome da coleção Weaviate para buscar"
+    llm_description: "The name of the Weaviate collection to perform keyword search on"
+    form: llm
+  - name: "query"
+    type: "string"
+    required: true
+    label:
+      en_US: "Query"
+      zh_Hans: "查询"
+      pt_BR: "Consulta"
+    human_description:
+      en_US: "Keyword search query"
+      zh_Hans: "关键词搜索查询"
+      pt_BR: "Consulta de busca por palavras-chave"
+    llm_description: "Keyword search query to find matching documents"
+    form: llm
+  - name: "limit"
+    type: "number"
+    required: false
+    default: 10
+    label:
+      en_US: "Limit"
+      zh_Hans: "限制"
+      pt_BR: "Limite"
+    human_description:
+      en_US: "Maximum number of results to return (1-1000)"
+      zh_Hans: "返回的最大结果数 (1-1000)"
+      pt_BR: "Número máximo de resultados para retornar (1-1000)"
+    llm_description: "Maximum number of search results to return"
+    form: llm
+  - name: "where_filter"
+    type: "string"
+    required: false
+    label:
+      en_US: "Where Filter"
+      zh_Hans: "过滤条件"
+      pt_BR: "Filtro Where"
+    human_description:
+      en_US: "JSON filter conditions for the search (optional)"
+      zh_Hans: "搜索的 JSON 过滤条件（可选）"
+      pt_BR: "Condições de filtro JSON para a busca (opcional)"
+    llm_description: "Optional JSON filter conditions to apply to the search"
+    form: llm
+  - name: "return_properties"
+    type: "string"
+    required: false
+    label:
+      en_US: "Return Properties"
+      zh_Hans: "返回属性"
+      pt_BR: "Propriedades de Retorno"
+    human_description:
+      en_US: "Comma-separated list of properties to return (optional)"
+      zh_Hans: "要返回的属性的逗号分隔列表（可选）"
+      pt_BR: "Lista separada por vírgula de propriedades para retornar (opcional)"
+    llm_description: "Optional comma-separated list of specific properties to return in results"
+    form: llm
+  - name: "search_properties"
+    type: "string"
+    required: false
+    label:
+      en_US: "Search Properties"
+      zh_Hans: "搜索属性"
+      pt_BR: "Propriedades de Busca"
+    human_description:
+      en_US: "Comma-separated list of properties to search in (optional)"
+      zh_Hans: "要搜索的属性的逗号分隔列表（可选）"
+      pt_BR: "Lista separada por vírgula de propriedades para buscar (opcional)"
+    llm_description: "Optional comma-separated list of specific properties to search within"
+    form: llm
+extra:
+  python:
+    source: tools/keyword_search.py

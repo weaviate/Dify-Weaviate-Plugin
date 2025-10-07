@@ -1,0 +1,113 @@
+identity:
+  name: "query_agent"
+  author: "weaviate"
+  label:
+    en_US: "Query Agent"
+    zh_Hans: "查询代理"
+    pt_BR: "Agente de Consulta"
+  description:
+    en_US: "Natural language query agent that can perform various Weaviate operations"
+    zh_Hans: "可以执行各种 Weaviate 操作的自然语言查询代理"
+    pt_BR: "Agente de consulta em linguagem natural que pode executar várias operações Weaviate"
+  icon: "icon.svg"
+description:
+  human:
+    en_US: "Natural language query agent that can perform various Weaviate operations"
+    zh_Hans: "可以执行各种 Weaviate 操作的自然语言查询代理"
+    pt_BR: "Agente de consulta em linguagem natural que pode executar várias operações Weaviate"
+  llm: "Intelligent agent that interprets natural language queries and performs appropriate Weaviate operations"
+parameters:
+  - name: "query"
+    type: "string"
+    required: true
+    label:
+      en_US: "Query"
+      zh_Hans: "查询"
+      pt_BR: "Consulta"
+    human_description:
+      en_US: "Natural language query describing what you want to do with Weaviate"
+      zh_Hans: "描述您想对 Weaviate 做什么的自然语言查询"
+      pt_BR: "Consulta em linguagem natural descrevendo o que você quer fazer com Weaviate"
+    llm_description: "Natural language query describing the desired Weaviate operation"
+    form: llm
+  - name: "collection_name"
+    type: "string"
+    required: false
+    label:
+      en_US: "Collection Name"
+      zh_Hans: "集合名称"
+      pt_BR: "Nome da Coleção"
+    human_description:
+      en_US: "Specific collection to work with (optional, agent can infer from query)"
+      zh_Hans: "要使用的特定集合（可选，代理可以从查询中推断）"
+      pt_BR: "Coleção específica para trabalhar (opcional, agente pode inferir da consulta)"
+    llm_description: "Optional specific collection name to work with"
+    form: llm
+  - name: "max_results"
+    type: "number"
+    required: false
+    default: 10
+    label:
+      en_US: "Max Results"
+      zh_Hans: "最大结果数"
+      pt_BR: "Máximo de Resultados"
+    human_description:
+      en_US: "Maximum number of results to return (1-100)"
+      zh_Hans: "返回的最大结果数 (1-100)"
+      pt_BR: "Número máximo de resultados para retornar (1-100)"
+    llm_description: "Maximum number of results to return for search operations"
+    form: llm
+  - name: "llm_provider"
+    type: "select"
+    required: false
+    default: "openai"
+    options:
+      - value: "openai"
+        label:
+          en_US: "OpenAI"
+      - value: "anthropic"
+        label:
+          en_US: "Anthropic"
+      - value: "custom"
+        label:
+          en_US: "Custom"
+    label:
+      en_US: "LLM Provider"
+      zh_Hans: "LLM 提供商"
+      pt_BR: "Provedor LLM"
+    human_description:
+      en_US: "LLM provider for query interpretation and response generation"
+      zh_Hans: "用于查询解释和响应生成的 LLM 提供商"
+      pt_BR: "Provedor LLM para interpretação de consulta e geração de resposta"
+    llm_description: "LLM provider to use for query interpretation"
+    form: llm
+  - name: "llm_model"
+    type: "string"
+    required: false
+    default: "gpt-3.5-turbo"
+    label:
+      en_US: "LLM Model"
+      zh_Hans: "LLM 模型"
+      pt_BR: "Modelo LLM"
+    human_description:
+      en_US: "Specific LLM model to use"
+      zh_Hans: "要使用的特定 LLM 模型"
+      pt_BR: "Modelo LLM específico para usar"
+    llm_description: "Specific LLM model name to use for query interpretation"
+    form: llm
+  - name: "llm_api_key"
+    type: "secret-input"
+    required: false
+    label:
+      en_US: "LLM API Key"
+      zh_Hans: "LLM API 密钥"
+      pt_BR: "Chave API LLM"
+    human_description:
+      en_US: "API key for the LLM provider (if not using system credentials)"
+      zh_Hans: "LLM 提供商的 API 密钥（如果不使用系统凭据）"
+      pt_BR: "Chave API para o provedor LLM (se não usar credenciais do sistema)"
+    llm_description: "API key for the LLM provider"
+    form: llm
+extra:
+  python:
+    source: tools/query_agent.py

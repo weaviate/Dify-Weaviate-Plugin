@@ -1,0 +1,31 @@
+identity:
+  author: "weaviate"
+  name: "weaviate-embedding"
+  label:
+    en_US: "Weaviate Text Embedding"
+    zh_Hans: "Weaviate 文本嵌入"
+    pt_BR: "Embedding de Texto Weaviate"
+  description:
+    en_US: "Generate text embeddings using Weaviate's built-in vectorization"
+    zh_Hans: "使用 Weaviate 的内置向量化生成文本嵌入"
+    pt_BR: "Gere embeddings de texto usando a vetorização integrada do Weaviate"
+  icon: "icon.svg"
+
+provider: "weaviate"
+label:
+  en_US: "Weaviate Text Embedding"
+  zh_Hans: "Weaviate 文本嵌入"
+  pt_BR: "Embedding de Texto Weaviate"
+
+supported_model_types:
+  - "text-embedding"
+
+configurate_methods:
+  - "credentials"
+
+models:
+  - models/text_embedding/weaviate-embedding-model.yaml
+
+extra:
+  python:
+    source: models/text_embedding/text_embedding.py
